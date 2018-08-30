@@ -1,4 +1,3 @@
-# encoding:utf-8
 from flask import Flask, render_template, request, redirect, url_for, session, g
 import config
 from models import db, User, Question, Answer
