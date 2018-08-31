@@ -32,7 +32,7 @@ def login():
             session.permanent = True
             return redirect(url_for('index'))
         else:
-            return u'手机号码或者密码错误,请确认后再登录'
+            return '手机号码或者密码错误,请确认后再登录'
 
 
 @app.route('/regist/', methods=['GET', 'POST'])
@@ -48,11 +48,11 @@ def regist():
         # 手机号码验证,如果被注册了,就不能再注册了
         user = User.query.filter(User.telephone == telephone).first()
         if user:
-            return u'该手机号码已被注册,请更换手机号码'
+            return '该手机号码已被注册,请更换手机号码'
         else:
             # password1和password2相等才可以
             if password1 != password2:
-                return u'两次密码不相等,请核对后再填写'
+                return '两次密码不相等,请核对后再填写'
             else:
                 user = User(telephone=telephone, username=username, password=password1)
                 db.session.add(user)
